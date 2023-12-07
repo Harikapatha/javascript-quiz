@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    <div id ="display-container">
+    <h2> Latest Scores : </h2>
+    <p id="display-data"></p>
+</div>
+<a href="index.html">
+<button>Go back</button></a>    
+<script>
+    function displayDataFromLocalStorage(key)
+    {
+        // Retrive data from local storage
+        const user_score = JSON.parse(localStorage.getItem(key));
+        console.log(user_score);
+        const len = user_score.length;
+        console.log(len);
+        //If the data is not null, display on the page
+        if (user_score != null){
+            const displayContainer = document.getElementById("display-container");
+            const displayData = document.getElementById("display-data");
+
+            console.log("I am here"+ user_score[len-1].score);
+
+            displayData.textContent = user_score[len-1].initials +"  scored  " +user_score[len-1].score;
+            displayContainer.style.display = "block";
+        }
+    }
+    displayDataFromLocalStorage("user_score");
+</script>
+</body>
+</html>
